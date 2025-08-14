@@ -1,0 +1,44 @@
+backend folder -->server.js
+npm init -y
+gitignore file
+dotenv file
+npm i express mongoose colors
+npm i -D nodemon
+package.json
+************
+  "name": "mern-pro2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js"
+
+"start": "node backend/server.js",
+  "server": "nodemon backend/server.js"
+ "server": "nodemon --env-file=.env backend/server.js"  
+ "type":"module"
+************************************************************
+ to run -- npm run server
+git init
+git add .
+
+"Initial Commit"
+
+********************************************
+
+create routes folder
+goalRouter file
+write or maintain all routes here.
+group all identical routes
+******************************************
+create controllers folder
+controllers file 
+write or maintain all routeFunctions here.
+***********************************************
+create middleware folder
+errorMiddleware file
+this is used to avoid common system internal error and to  express  what we are giving the error code or status code.
+
+************************************************************
+when we connect the mongoose to apis , it returns the  promise so we should async before the get, post function.
+then we should install express-async-handler to avoid try-catch. 
+wrap with expressAsyncHandler to entire functions
+
