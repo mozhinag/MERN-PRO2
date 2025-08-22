@@ -19,8 +19,7 @@ package.json
  to run -- npm run server
 git init
 git add .
-
-"Initial Commit"
+git commit -m "Initial Commit"
 
 ********************************************
 
@@ -41,4 +40,33 @@ this is used to avoid common system internal error and to  express  what we are 
 when we connect the mongoose to apis , it returns the  promise so we should async before the get, post function.
 then we should install express-async-handler to avoid try-catch. 
 wrap with expressAsyncHandler to entire functions
+*************************************************************
+we should give these on terminal to commit the goalcontroller and routes
+ git add .
+git commit -m "goalController and routes"
+*********************************************************************
+MONGODB ATLAS
 
+CREATE new project
+cluster
+drivers
+network access
+overview -> connect -> click connect using compass ->database name and collection copy the uri
+mongodbcompass ->newconnection string ->  copied uri paste here -> it displays the database and 
+connection and write the database name after slash and password
+***************************************************************
+
+.env ->  MONGO_URI=paste the copied uri here.
+ then restart the app because we add the uri on .eny file
+************************************************************
+
+create config folder
+db.js file 
+connect the file in server.js.
+
+******************************************************
+
+create models folder
+goalModel.js file 
+now we can use the into the goalsController.js
+*********************************
