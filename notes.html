@@ -70,3 +70,34 @@ create models folder
 goalModel.js file 
 now we can use the into the goalsController.js
 *********************************
+
+create userModel file on models folder
+
+ write  a userSchema and export it.
+
+create userSchema in this file and export
+****************************************
+
+write the belove code in the goalModel.js
+
+  user : {
+    type:mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User'
+  },this is for only aunthenticated user can add or change the users details.
+  *********************************************************
+
+server.js -> add this line app.use('/api/users',userRoutes) 
+app.use('/api/users', userRoutes)
+That line means you’re mounting your router (userRoutes) at the path /api/users.
+**************************************************
+
+routes folder-> create userRoutes.js->Router.post('/', registerUser) ->method- post 
+routes folder-> create userRoutes.js->Router.post('/login', loginUser)  ->method- post
+routes folder-> create userRoutes.js->Router.post('/me', getMe)  method- get
+That line means you’re creating a POST route on / and mapping it to the controller function registerUser.
+****************************************************************
+create user controller function ->registerUser-> method- post->access-> public
+->loginUser-> method- post->access-> public
+->getMe-> method- post->access-> public 
+(since the aunthenticatd users only can come private access)

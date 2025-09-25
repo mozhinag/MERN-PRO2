@@ -5,17 +5,22 @@
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
-    "server": "nodemon --env-file=.env backend/server.js"
+    "server": "nodemon --env-file=.env backend/server.js",
+    "client": "npm start --prefix frontend"
   },
   "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "colors": "^1.4.0",
     "express": "^5.1.0",
     "express-async-handler": "^1.2.0",
-    "mongoose": "^8.17.1"
+    "js": "^0.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.17.1",
+    "web-vitals": "^5.1.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
