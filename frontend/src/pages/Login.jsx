@@ -1,25 +1,63 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaSignInAlt } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
+import { login, reset } from "../features/auth/authSilce";
+
+import Spinner from "../components/Spinner";
 
 function Login() {
   const [formData, setFormData] = useState({
-        email: "",
-         password: "",
-
+    email: "",
+    password: "",
   });
 
-  const {email,password} = formData
- const onChange = (e)=>{
-  setFormData((prevState)=>({
-    ...prevState,
-    [e.target.name]: e.target.value
+  const { email, password } = formData;
 
-  }))
- }
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
- const onSubmit = (e) =>{
-e.preventDefault()
- }
+
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
+    if (isSuccess || user) {
+      navigate("/");
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, dispatch, navigate]);
+
+
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const userData = {
+      email,
+      password,
+    };
+    dispatch(login(userData));
+  };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <>
@@ -31,9 +69,8 @@ e.preventDefault()
         <p>Login to Setting goal</p>
       </section>
 
-      <form onSubmit = {onSubmit}>
-
-         <div className="form-group">
+      <form onSubmit={onSubmit}>
+        <div className="form-group">
           <input
             type="email"
             className="form-control"
@@ -44,7 +81,7 @@ e.preventDefault()
             onChange={onChange}
           />
         </div>
-    
+
         <div className="form-group">
           <input
             type="password"
@@ -56,10 +93,11 @@ e.preventDefault()
             onChange={onChange}
           />
         </div>
-          </form>
-          <button type="submit" className="btn btn-block">
-            Submit
-          </button>
+         <button type="submit" className="btn btn-block">
+        Submit
+      </button>
+      </form>
+     
     </>
   );
 }
