@@ -112,7 +112,7 @@ function Register() {
           </div>
           <div className="form-group">
             <input
-              type="password2"
+              type="password"
               className="form-control"
               id="password2"
               name="password2"
