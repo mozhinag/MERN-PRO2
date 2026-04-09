@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const API_URL = 'api/goals/'
+const API_URL = '/api/goals/'
 
 //Create a goal
-const createGoal = async(goalData, token) =>{ 
+const createGoal = async(goalData, token) =>{
     const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -13,7 +13,7 @@ const createGoal = async(goalData, token) =>{
     return response.data
 }
 //Get User goals
-const getGoals = async(token) =>{ 
+const getGoals = async(token) =>{
     const config = {
     headers: {
       Authorization: `Bearer ${token}`,
